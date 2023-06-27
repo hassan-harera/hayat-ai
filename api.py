@@ -19,6 +19,19 @@ def predict():
     label = int(classifier.predict(text)[0])
     certainty = (np.array(classifier.predict_proba(text)[0])[label])
 
+    if label == 0:
+        label = 'BOOK'
+    elif label == 1:
+        label = 'CLOTHING'
+    elif label == 2:
+        label = 'FOOD'
+    elif label == 3:
+        label = 'MEDICINE'
+    elif label == 4:
+        label = 'POSSESSIONS'
+    else:
+        label = 'other'
+
     response = {
         'label': label,
         'certainty': float(certainty)

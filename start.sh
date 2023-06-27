@@ -1,3 +1,7 @@
-docker build -t model:latest .
-docker run -d --name model -p 5000:5000 model
+#!/bin/bash
+#Docker down
+#eval $(minikube docker-env)
+docker-compose -f docker-compose.yml down
 
+#Docker up
+docker-compose -f ./docker-compose.yml up --build -d
